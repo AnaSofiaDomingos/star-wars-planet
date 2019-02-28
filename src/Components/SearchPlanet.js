@@ -29,16 +29,16 @@ class SearchPlanet extends Component {
     // render a nav bar with a input for the value searched and a button to submit
     render() {
         return (
-            <nav class="navbar navbar-light bg-light justify-content-between">
-                <a class="navbar-brand">List planets</a>
-                <form class="form-inline" onSubmit={this.search}>
+            <nav className="navbar navbar-light bg-light justify-content-between">
+                <a className="navbar-brand" href="/">List planets</a>
+                <form className="form-inline" onSubmit={this.search}>
                     <input
-                        class="form-control mr-sm-2"
+                        className="form-control mr-sm-2"
                         type="search"
                         placeholder="Search a planet name"
                         value={this.state.searchValue}
                         onChange={this.onChangeValue} />
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </nav>
         )
@@ -47,7 +47,6 @@ class SearchPlanet extends Component {
 
 // check of props types 
 SearchPlanet.propTypes = {
-    onStored: PropTypes.func.isRequired
 }
 
 

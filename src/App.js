@@ -6,6 +6,7 @@ import Planets from './Components/Planets';
 import SearchPlanet from './Components/SearchPlanet';
 
 class App extends Component {
+  urlSwapi = 'https://swapi.co/api/'
 
   // states defined for this component
   state = {
@@ -17,7 +18,7 @@ class App extends Component {
    * get the list of planets
    */
   componentDidMount() {
-    this.getPlanets('https://swapi.co/api/planets/');
+    this.getPlanets(this.urlSwapi + 'planets/');
   }
 
   /**
