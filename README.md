@@ -13,12 +13,6 @@ Star Wars planets provides :
 Node.js installed
 Git installed
 
-## How to build the project
-
-```
-npm install
-```
-
 ## How to run the project
 
 First, open a terminal and clone the project with 
@@ -29,6 +23,11 @@ git clone https://github.com/AnaSofiaDomingos/star-wars-planet.git
 Move to the project cloned
 ```
 cd star-wars-planet
+```
+
+Build the projet
+```
+npm install
 ```
 
 Launch the application with 
