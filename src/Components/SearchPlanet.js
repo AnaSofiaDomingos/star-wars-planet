@@ -30,6 +30,7 @@ class SearchPlanet extends Component {
     // render a nav bar with a input for the value searched and a button to submit
     render() {
 
+        // if we are in the details planet remove search input
         if (this.props.planet) {
 
             return (
@@ -40,6 +41,7 @@ class SearchPlanet extends Component {
 
         }
 
+        // else display search input
         return (
             <nav className="navbar navbar-light bg-light justify-content-between">
                 <a className="navbar-brand" href="/" >List of Planets</a>
