@@ -3,6 +3,10 @@ import PropTypes from 'prop-types'
 
 import './Planets.css'
 
+/**
+ * Display a table with all planets 
+ * @param {*} planets : list of planets passed in parameters from the parent component
+ */
 const Planets = ({ planets }) => (
     <table className="table">
         <thead className="thead-dark"> 
@@ -28,6 +32,7 @@ const Planets = ({ planets }) => (
     </table>
 )
 
+// check prop types
 Planets.propTypes = {
     planets: PropTypes.arrayOf(
         PropTypes.shape({
