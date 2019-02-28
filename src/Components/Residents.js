@@ -40,7 +40,7 @@ class Residents extends Component {
      */
     render() {
 
-        if (this.state.residents) {
+        if (this.state.residents.length > 0) {
 
             return (
                 <ul>

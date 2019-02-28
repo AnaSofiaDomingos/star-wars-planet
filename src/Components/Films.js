@@ -39,7 +39,7 @@ class Films extends Component {
      * render a list of film with some details if there is films with the planet or render no film
      */
     render() {
-        if (this.state.films) {
+        if (this.state.films.length > 0) {
             return (
                 <ul>
                     {
