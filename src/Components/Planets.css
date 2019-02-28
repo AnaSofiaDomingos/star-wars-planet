@@ -1,0 +1,4 @@
+.planets tr:hover{
+    background-color: lightgrey;
+    cursor : pointer;
+}

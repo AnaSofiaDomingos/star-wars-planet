@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import './PlanetDetails.css'
+import '../App.css';
 
 import Residents from './Residents';
 import Films from './Films';
@@ -16,8 +17,10 @@ class PlanetDetails extends Component {
     render() {
         const planet = this.props.planet;
         return (
-            <div>
-                <div>
+            <div className="spacing">
+                <a className="btn btn-secondary float-right" href="/" >Go back</a>
+
+                <div className="planet-details">
                     <h3> Planet Details </h3>
                     <table className="planet-details table ">
                         <tbody>
