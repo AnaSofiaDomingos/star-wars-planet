@@ -8,6 +8,10 @@ class Residents extends Component {
         residents: []
     }
 
+    /**
+      * function executed when the component is mounted
+      * for each resident call swapi to get the details
+      */
     componentDidMount() {
         if (this.props.residents) {
             this.props.residents.map(resident => {
@@ -17,7 +21,8 @@ class Residents extends Component {
     }
 
     /**
-     * get the planet details with the url passed in parameter
+     * get the residents details with the url passed in parameter
+     * map result into a table
      * @param {*} url  : url from swapi to get details
      */
     getResidentDetails(url) {
@@ -30,9 +35,11 @@ class Residents extends Component {
             })
     }
 
+    /** 
+     * render a list of residents or render no residents
+     */
     render() {
-        
-        console.log(this.state.residents)
+
         if (this.state.residents) {
 
             return (

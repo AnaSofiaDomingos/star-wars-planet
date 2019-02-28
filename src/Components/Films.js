@@ -8,6 +8,10 @@ class Films extends Component {
         films: []
     }
 
+    /**
+      * function executed when the component is mounted
+      * for each film call swapi to get the details
+      */
     componentDidMount() {
         if (this.props.films) {
             this.props.films.map(film => {
@@ -17,7 +21,8 @@ class Films extends Component {
     }
 
     /**
-     * get the planet details with the url passed in parameter
+     * get the film details with the url passed in parameter
+     * map result into a table
      * @param {*} url  : url from swapi to get details
      */
     getFilmDetails(url) {
@@ -30,6 +35,9 @@ class Films extends Component {
             })
     }
 
+    /** 
+     * render a list of film with some details if there is films with the planet or render no film
+     */
     render() {
         if (this.state.films) {
             return (
