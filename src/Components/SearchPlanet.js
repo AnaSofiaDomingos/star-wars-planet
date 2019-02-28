@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 class SearchPlanet extends Component {
-      // states defined for this component
+    // states defined for this component
     state = {
         searchValue: ''
     }
@@ -26,11 +26,23 @@ class SearchPlanet extends Component {
         })
     }
 
+
     // render a nav bar with a input for the value searched and a button to submit
     render() {
+
+        if (this.props.planet) {
+
+            return (
+                <nav className="navbar navbar-light bg-light justify-content-between">
+                    <a className="navbar-brand" href="/" >List of Planets</a>
+                </nav>
+            )
+
+        }
+
         return (
             <nav className="navbar navbar-light bg-light justify-content-between">
-                <a className="navbar-brand" href="/">List planets</a>
+                <a className="navbar-brand" href="/" >List of Planets</a>
                 <form className="form-inline" onSubmit={this.search}>
                     <input
                         className="form-control mr-sm-2"
@@ -38,7 +50,7 @@ class SearchPlanet extends Component {
                         placeholder="Search a planet name"
                         value={this.state.searchValue}
                         onChange={this.onChangeValue} />
-                    <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </nav>
         )

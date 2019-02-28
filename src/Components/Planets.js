@@ -7,7 +7,7 @@ import './Planets.css'
  * Display a table with all planets 
  * @param {*} planets : list of planets passed in parameters from the parent component
  */
-const Planets = ({ planets }) => (
+const Planets = ({ planets, onClick }) => (
     <table className="table">
         <thead className="thead-dark"> 
             <tr>
@@ -19,8 +19,8 @@ const Planets = ({ planets }) => (
         </thead>
         <tbody>
             {
-                planets.map(({ name, diameter, terrain, population }) => (
-                    <tr key={name} scope="row">
+                planets.map(({name, diameter, terrain, population, url }) => (
+                    <tr key={name} onClick={() => onClick(name, url)}>
                         <td className="name">{name}</td>
                         <td className="diameter">{diameter}</td>
                         <td className="terrain">{terrain}</td>
