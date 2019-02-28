@@ -3,8 +3,11 @@ import PropTypes from 'prop-types'
 import axios from 'axios'
 
 import './Planets.css'
+import '../App.css';
 
 import Pagination from './Pagination';
+import SearchPlanet from './SearchPlanet';
+
 
 /**
  * Display a table with all planets 
@@ -16,35 +19,36 @@ class Planets extends Component {
         planetList: [],
         nextPage: null,
         previousPage: null,
-        total : 0
+        total: 0
     }
 
-      /**
-   * function executed when the component is mounted
-   * get the list of planets
-   */
-  componentDidMount() {
-    this.getPlanets('https://swapi.co/api/planets/', true);
-  }
 
-  /**
-   * update planet list 
-   * @Param url url to get the new planet list
-   * @Param next boolean to know if number is incremented or decremented
-   */
-    updatePlanetList = (url, next) => {
-        this.getPlanets(url, next)
+    /**
+     * function executed when the component is mounted
+     * get the list of planets
+     */
+    componentDidMount() {
+        this.getPlanets('https://swapi.co/api/planets/', null);
+    }
+
+    /**
+     * update planet list 
+     * @Param url url to get the new planet list
+     * @Param next boolean to know if number is incremented or decremented
+     */
+    updatePlanetList = (url, inc) => {
+        this.getPlanets(url, inc)
     }
 
     /**
     * get the planets with the url passed in parameter
     * @param {*} url  : url from swapi to get planets
     */
-    getPlanets(url, next) {
+    getPlanets(url, inc) {
         axios.get(url)
             .then(res => {
                 const result = res.data;
-                this.setState({ number: next ? this.state.number + result.results.length : this.state.number - result.results.length })
+                this.setState({ number: inc === null ? result.results.length : (inc === true ? this.state.number + result.results.length : this.state.number - result.results.length) })
                 this.setState({ total: result.count })
                 this.setState({ previousPage: result.previous });
                 this.setState({ nextPage: result.next });
@@ -52,13 +56,31 @@ class Planets extends Component {
             })
     }
 
+    /**
+ * filter planets with search value gotten from the children component SearchPlanet
+ * @param {*} searchValue : search value from component SearchPlanet*/
+    handleSearch = (searchValue) => {
+        if (searchValue === '')
+            this.getPlanets('https://swapi.co/api/planets/', null);
+        else {
+            let list = this.state.planetList.filter(planet => planet.name.toLowerCase().includes(searchValue.toLowerCase()))
+            this.setState({ planetList: list })
+            this.setState({ previousPage: null });
+            this.setState({ nextPage: null });
+            this.setState({ total: list.length });
+            this.setState({ number: list.length });
+        }
+    }
+
     render() {
-        if (this.state.planetList == 0)
+
+        if (this.state.planetList.length == 0)
             return (<div>No planets found</div>)
 
 
         return (
-            <div>
+            <div className="planets">
+                <SearchPlanet onSearchValue={this.handleSearch}></SearchPlanet>
                 <table className="table">
                     <thead className="thead-dark">
                         <tr>

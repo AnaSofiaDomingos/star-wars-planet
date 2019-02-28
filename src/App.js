@@ -10,33 +10,11 @@ import { withRouter } from 'react-router-dom'
 class App extends Component {
   // states defined for this component
   state = {
-    planetList: [],
-    planet: null
+    planet: null,
   }
 
-  /**
-   * function executed when the component is mounted
-   * get the list of planets
-   */
-  componentDidMount() {
-    this.getPlanets('https://swapi.co/api/planets/');
-  }
 
-  /**
-   * get the planets with the url passed in parameter
-   * @param {*} url  : url from swapi to get planets
-   */
-  getPlanets(url) {
-    axios.get(url)
-      .then(res => {
-        const result = res.data;
-        this.setState({ planetList: result.results });
-        this.setState({ previousPage: result.previous });
-        this.setState({ nextPage: result.next });
-        this.setState({ numberPlanets: result.count });
-      })
-  }
-
+  
   /**
    * get the planet details with the url passed in parameter
    * @param {*} url  : url from swapi to get details
@@ -50,16 +28,11 @@ class App extends Component {
   }
 
   /**
-   * filter planets with search value gotten from the children component SearchPlanet
-   * @param {*} searchValue : search value from component SearchPlanet*/
-  handleSearch = (searchValue) => {
-    this.setState({ planetList: this.state.planetList.filter(planet => planet.name.toLowerCase().includes(searchValue.toLowerCase())) })
-  }
-
+   * handle click on planet
+   * @Param url url to get details of planet 
+   */
   handlePlanetClick = (name, url) => {
-    this.setState({ showPlanetDetail: true });
     this.getPlanetDetail(url);
-
   }
 
   /**
@@ -71,9 +44,8 @@ class App extends Component {
         <div>
           <h1>Star Wars Planets</h1>
           <SearchPlanet
-            onSearchValue={this.handleSearch}
             planet={this.state.planet}>
-          </SearchPlanet>
+            </SearchPlanet>
           <PlanetDetails planet={this.state.planet}></PlanetDetails>
         </div>
       )
@@ -82,11 +54,10 @@ class App extends Component {
     return (
       <div>
         <h1>Star Wars Planets</h1>
-        <SearchPlanet onSearchValue={this.handleSearch}></SearchPlanet>
+        
         <Planets
-          
           onClick={this.handlePlanetClick}>
-        </Planets>
+          </Planets>
       </div>
     );
   }
