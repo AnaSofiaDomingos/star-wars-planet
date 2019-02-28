@@ -8,7 +8,11 @@ import Films from './Films';
 
 class PlanetDetails extends Component {
 
-
+    /**
+     * render a table with all planet details 
+     * render a list of residents
+     * render a list of films 
+     */
     render() {
         const planet = this.props.planet;
         return (
