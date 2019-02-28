@@ -25,13 +25,13 @@ class Pagination extends Component {
             <nav>
                 <ul className="pagination">
                     <li className={`page-item ${previousDisabled}`}>
-                        <a className="page-link" onClick={this.previous} href="/">Previous</a>
+                        <a className="page-link" onClick={this.previous} >Previous</a>
                     </li>
-                    <li className="page-item">
+                    <li className="page-item disabled">
                         <span className="page-link">{this.props.count} / {this.props.total}</span>
                     </li>
                     <li className={`page-item ${nextDisabled}`} >
-                        <a className="page-link" onClick={this.next} href="/">Next</a>
+                        <a className="page-link" onClick={this.next} >Next</a>
                     </li>
                 </ul>
             </nav>

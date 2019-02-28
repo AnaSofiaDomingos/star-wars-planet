@@ -59,13 +59,13 @@ class PlanetDetails extends Component {
                     </table>
                 </div>
 
-                <div>
+                <div className="spacing">
                     <h3> Residents </h3>
                     <Residents residents={planet.residents}></Residents>
                 </div>
 
 
-                <div >
+                <div className="spacing">
                     <h3> Films </h3>
                     <Films films={planet.films}></Films>
                 </div>
