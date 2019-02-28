@@ -11,8 +11,7 @@ class App extends Component {
   // states defined for this component
   state = {
     planetList: [],
-    planet: null,
-    showPlanetDetails: false
+    planet: null
   }
 
   /**
@@ -32,6 +31,9 @@ class App extends Component {
       .then(res => {
         const result = res.data;
         this.setState({ planetList: result.results });
+        this.setState({ previousPage: result.previous });
+        this.setState({ nextPage: result.next });
+        this.setState({ numberPlanets: result.count });
       })
   }
 
@@ -43,7 +45,6 @@ class App extends Component {
     axios.get(url)
       .then(res => {
         const result = res.data;
-        console.log(result)
         this.setState({ planet: result });
       })
   }
@@ -57,7 +58,6 @@ class App extends Component {
 
   handlePlanetClick = (name, url) => {
     this.setState({ showPlanetDetail: true });
-    console.log("planet click")
     this.getPlanetDetail(url);
 
   }
@@ -66,23 +66,27 @@ class App extends Component {
    * render application
    */
   render() {
-    console.log(this.state)
-
-     if (this.state.planet) {
+    if (this.state.planet) {
       return (
         <div>
           <h1>Star Wars Planets</h1>
-          <SearchPlanet onSearchValue={this.handleSearch} planet={this.state.planet}></SearchPlanet>
+          <SearchPlanet
+            onSearchValue={this.handleSearch}
+            planet={this.state.planet}>
+          </SearchPlanet>
           <PlanetDetails planet={this.state.planet}></PlanetDetails>
         </div>
       )
-    } 
+    }
 
     return (
       <div>
         <h1>Star Wars Planets</h1>
         <SearchPlanet onSearchValue={this.handleSearch}></SearchPlanet>
-        <Planets planets={this.state.planetList} onClick={this.handlePlanetClick}></Planets>
+        <Planets
+          
+          onClick={this.handlePlanetClick}>
+        </Planets>
       </div>
     );
   }
