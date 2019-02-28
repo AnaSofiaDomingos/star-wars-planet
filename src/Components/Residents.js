@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import axios from 'axios';
 
 
@@ -14,7 +13,7 @@ class Residents extends Component {
       */
     componentDidMount() {
         if (this.props.residents) {
-            this.props.residents.map(resident => {
+            this.props.residents.map( (resident) => {
                 this.getResidentDetails(resident);
             })
         }

@@ -5,7 +5,6 @@ import './App.css';
 import Planets from './Components/Planets';
 import SearchPlanet from './Components/SearchPlanet';
 import PlanetDetails from './Components/PlanetDetails';
-import { withRouter } from 'react-router-dom'
 
 class App extends Component {
   // states defined for this component

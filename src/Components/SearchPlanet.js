@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 
 class SearchPlanet extends Component {
     // states defined for this component

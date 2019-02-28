@@ -74,7 +74,7 @@ class Planets extends Component {
 
     render() {
 
-        if (this.state.planetList.length == 0)
+        if (this.state.planetList.length === 0)
             return (<div>No planets found</div>)
 
 

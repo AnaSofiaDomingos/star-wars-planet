@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import axios from 'axios';
-
 
 class Films extends Component {
     state = {
@@ -12,9 +10,9 @@ class Films extends Component {
       * function executed when the component is mounted
       * for each film call swapi to get the details
       */
-    componentDidMount() {
+    componentDidMount(){
         if (this.props.films) {
-            this.props.films.map(film => {
+            this.props.films.map( (film) => {
                 this.getFilmDetails(film);
             })
         }
